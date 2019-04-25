@@ -1,13 +1,13 @@
 package edu.handong.analysis.datamodel;
 
 public class Student {
-	String name = null;
+	private String name;
 	
 	Student(String name){
 		this.name = name;
 	}
 	
-	String getName() {
+	public String getName() {
 		return name;
 	}
 

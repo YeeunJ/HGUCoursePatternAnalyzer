@@ -7,7 +7,7 @@ public class Course {
 		courseName = name;
 	}
 	
-	String getCourseName() {
+	public String getCourseName() {
 		return courseName;
 	}
 
