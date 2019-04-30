@@ -3,7 +3,7 @@ package edu.handong.analysis.datamodel;
 public class Course {
 	private String courseName;
 	
-	Course(String name){
+	public Course(String name){
 		courseName = name;
 	}
 	

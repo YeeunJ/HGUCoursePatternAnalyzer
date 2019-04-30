@@ -21,8 +21,8 @@ public class HGUCoursePatternAnalyzer {
 
 	int numOfStudents;
 	int numOfCourses;
-	Student[] students;
-	Course[] courses;
+	Student[] students = null;
+	Course[] courses = null;
 	
 	/**
 	 * This method runs our analysis logic to get the list of student and course names from lines.
@@ -36,6 +36,7 @@ public class HGUCoursePatternAnalyzer {
 		students = initiateStudentArrayFromLines(lines);
 		
 		System.out.println("Number of All Students: " + numOfStudents);
+		
 		for(Student student: students) {
 			System.out.println(student.getName());
 		}
@@ -54,11 +55,19 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private Student[] initiateStudentArrayFromLines(String[] lines) {
+		Student[] student = new Student[numOfStudents];
+		Student st;
+		int count = 0;
 		
-		// TODO: implement this method
+		for(String line: lines) {
+			st = new Student(line.split(", ")[1]);
+			if(studentExist(student, st)) {
+				student[count] = st;
+				count++;
+			}
+		}
 		
-		
-		return null;
+		return student;
 	}
 
 	/**
@@ -68,10 +77,15 @@ public class HGUCoursePatternAnalyzer {
 	 * @return boolean
 	 */
 	private boolean studentExist(Student[] students, Student student) {
-		
-		// TODO: implement this method
-
-		return false;
+		int count = 0;
+		//null일 때까지 반복
+		while(students[count] != null) {
+			//만약 같으면 false
+			if(students[count].getName().equals(student.getName()) == true)
+				return false;
+			count++;
+		}
+		return true;
 	}
 	
 	/**
@@ -80,10 +94,18 @@ public class HGUCoursePatternAnalyzer {
 	 * @return
 	 */
 	private Course[] initiateCourseArrayFromLines(String[] lines) {
+		Course[] course = new Course[numOfCourses];
+		Course cs;
+		int count = 0;
 		
-		// TODO: implement this method
-		
-		return null;
+		for(String line: lines) {
+			cs = new Course(line.split(", ")[2]);
+			if(courseExist(course, cs)) {
+				course[count] = cs;
+				count++;
+			}
+		}
+		return course;
 	}
 
 	/**
@@ -93,10 +115,15 @@ public class HGUCoursePatternAnalyzer {
 	 * @return boolean
 	 */
 	private boolean courseExist(Course[] courses, Course course) {
-		
-		// TODO: implement this method
-
-		return false;
+		int count = 0;
+		//null일 때까지 반복
+		while(courses[count] != null) {
+			//만약 같으면 false
+			if(courses[count].getCourseName().equals(course.getCourseName()) == true)
+				return false;
+			count++;
+		}
+		return true;
 	}
 
 }
