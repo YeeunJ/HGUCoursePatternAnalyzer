@@ -60,7 +60,7 @@ public class HGUCoursePatternAnalyzer {
 		int count = 0;
 		
 		for(String line: lines) {
-			st = new Student(line.split(", ")[1]);
+			st = new Student(line.trim().split(", ")[1]);
 			if(studentExist(student, st)) {
 				student[count] = st;
 				count++;
@@ -99,7 +99,7 @@ public class HGUCoursePatternAnalyzer {
 		int count = 0;
 		
 		for(String line: lines) {
-			cs = new Course(line.split(", ")[2]);
+			cs = new Course(line.trim().split(", ")[2]);
 			if(courseExist(course, cs)) {
 				course[count] = cs;
 				count++;
